@@ -1,0 +1,11 @@
+function each(aOrO, doThis) {
+  if(Array.isArray(aOrO) === "array") {
+    for(var i = 0; i < aOrO.length; i++) {
+      doThis(aOrO[i]);
+    }
+  } else if(typeof aOrO === "object") {
+      for(var key in aOrO) {
+        doThis(aOrO[key]);
+      }
+  }
+}
