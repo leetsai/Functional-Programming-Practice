@@ -1,0 +1,29 @@
+// The every method calls the callbackfn function one time for each array element, in ascending index order,
+// until the callbackfn function returns false. If an element that causes callbackfn to return false is found
+// the every method immediately returns false. Otherwise, the every method returns true. The callback function 
+// is not called for missing elements of the array. In addition to array objects, the every method can be used
+// by any object that has a length property and that has numerically indexed property names.
+
+function each(aOrO, doThis) {
+  if(Array.isArray(aOrO) === "array") {
+    for(var i = 0; i < aOrO.length; i++) {
+      doThis(aOrO[i]);
+    }
+  } else if(typeof aOrO === "object") {
+      for(var key in aOrO) {
+        doThis(aOrO[key]);
+      }
+  }
+}
+
+function every(arr, criteria) {
+	var foo = true;
+  each(arr, function(element) {
+    if(!criteria(element)) {
+    	foo = false;
+    }
+  });
+  return foo;
+}
+
+every([2, 4, 5], function(num) { return num % 2 === 0; });
